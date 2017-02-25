@@ -5,10 +5,10 @@
 ## Login   <artha@epitech.net>
 ## 
 ## Started on  Mon Nov  7 15:05:57 2016 dylan renard
-## Last update Sat Feb 25 16:39:36 2017 dylan renard
+## Last update Sat Feb 25 21:49:21 2017 dylan renard
 ##
 
-CC	= 	gcc -g
+CC	= 	gcc
 
 RM	= 	rm -f
 
