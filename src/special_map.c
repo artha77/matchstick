@@ -5,7 +5,7 @@
 ** Login   <artha@epitech.net>
 **
 ** Started on  Wed Feb 22 16:27:05 2017 dylan renard
-** Last update Wed Feb 22 16:28:29 2017 dylan renard
+** Last update Fri Feb 24 18:36:13 2017 dylan renard
 */
 
 #include "matchstick.h"
@@ -17,7 +17,7 @@ int		*dup_map(int number_of_line, int *map)
    int		i;
 
    i = 0;
-  if ((map = malloc((number_of_line + 1) * sizeof(int))) == NULL)
+  if ((map_copy = malloc((number_of_line + 1) * sizeof(int))) == NULL)
     return (NULL);
   while (map[i] != -1)
     {
@@ -91,7 +91,7 @@ char		**bin_map_to_pair_map(int number_of_line, char **bin_map)
   int		i;
 
   i = 0;
-  if ((pair_map = malloc((number_of_line - 1) * sizeof(char *))) == NULL)
+  if ((pair_map = malloc((number_of_line) * sizeof(char *))) == NULL)
     return (NULL);
   while (bin_map[i] != NULL)
     {

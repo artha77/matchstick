@@ -5,7 +5,7 @@
 ## Login   <Artha77@epitech.net>
 ##
 ## Started on  Mon Oct 17 20:22:43 2016 dylan renard
-## Last update Tue Feb 21 10:05:44 2017 dylan renard
+## Last update Sat Feb 25 10:42:57 2017 dylan renard
 ##
 
 CC	=	gcc
@@ -18,10 +18,14 @@ NAME	=	libmy.a
 
 RM	=	rm -f
 
-SRCS	=	is_bt.c	\
+SRCS	=	list.c	\
+		list_util.c	\
+		list_uitl2.c	\
+		is_bt.c	\
 		my_put_nbr.c	\
 		my_putchar.c	\
 		int_overflow.c	\
+		my_power_it.c	\
 		my_atoi.c	\
 		my_putstr.c	\
 		my_strcpy.c	\
@@ -29,6 +33,7 @@ SRCS	=	is_bt.c	\
 		my_strndup.c	\
 		my_strcat.c	\
 		xmalloc.c	\
+		get_next_line.c	\
 		my_str_to_wordtab.c	\
 		tab_to_space.c	\
 		my_strncpy.c	\
@@ -52,7 +57,7 @@ SRCS	=	is_bt.c	\
 
 OBJS	=	$(SRCS:.c=.o)
 
-CPLIB	=	cp $(NAME) ../ && cp include/my.h ../../include/ && cp include/get_next_line.h ../../include/
+CPLIB	=	cp $(NAME) ../ && cp include/my.h ../../include/ && cp include/get_next_line.h ../../include/ && cp include/list.h ../../include/
 
 all: $(NAME)
 

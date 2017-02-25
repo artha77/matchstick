@@ -5,7 +5,7 @@
 ** Login   <Artha77@epitech.net>
 **
 ** Started on  Sun Oct 23 15:02:00 2016 dylan renard
-** Last update Tue Feb 21 10:06:13 2017 dylan renard
+** Last update Fri Feb 24 09:07:25 2017 dylan renard
 */
 
 #ifndef MY_H_
@@ -19,6 +19,7 @@ int	my_putchar_name(const char c, const char *name);
 int	my_putstr_fd(const char *str, const int fd);
 int	my_putstr_name(const char *str, const char *name);
 int	my_putstr_name_end(const char *str, const char *name);
+int	my_power_it(int, int);
 int	my_putstr(const char *str);
 int	my_puts(const char *str);
 int	my_puts_fd(char *str, const int fd);

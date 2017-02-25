@@ -5,7 +5,7 @@
 ** Login   <artha@epitech.net>
 **
 ** Started on  Thu Jan 12 13:22:18 2017 dylan renard
-** Last update Sat Jan 14 15:25:08 2017 dylan renard
+** Last update Sat Feb 25 12:38:46 2017 dylan renard
 */
 
 #ifndef GET_NEXT_LINE_H_
@@ -17,6 +17,7 @@ typedef struct		s_stat
 {
   char			*rest;
   int			fd;
+  int			ret;
 }			t_stat;
 
 char			*get_next_line(const int fd);

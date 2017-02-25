@@ -5,11 +5,10 @@
 ** Login   <artha@epitech.net>
 **
 ** Started on  Tue Feb 21 15:25:35 2017 dylan renard
-** Last update Tue Feb 21 15:37:28 2017 dylan renard
+** Last update Sat Feb 25 12:48:59 2017 dylan renard
 */
 
 #include "matchstick.h"
-#include "gnl.h"
 
 bool		verif_match(char *match, int line, int max_num, int *map)
 {
@@ -27,7 +26,7 @@ bool		verif_match(char *match, int line, int max_num, int *map)
       else
 	return (true);
     }
-  else return (my_puterr("Error: match must fit in an int\n"), false);
+  else return (my_puterr(ERR_LIMIT), false);
 }
 
 int		get_match(char *msg, int line, int max_num, int *map)
@@ -48,6 +47,8 @@ bool		verif_line(char *line, int number_of_line)
 
   if (my_str_isnum(line))
     {
+      if (int_overflow(line))
+	return (my_puterr("Error: this line is out of range\n"), false);
       line_number = my_atoi(line);
       if (line_number <= 0 || line_number > number_of_line)
 	return (my_puterr("Error: this line is out of range\n"), false);

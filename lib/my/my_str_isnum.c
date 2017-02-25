@@ -5,7 +5,7 @@
 ** Login   <Artha77@epitech.net>
 **
 ** Started on  Tue Oct 11 08:42:45 2016 dylan renard
-** Last update Mon Oct 24 20:36:56 2016 dylan renard
+** Last update Fri Feb 24 23:08:10 2017 dylan renard
 */
 
 #include <stdlib.h>
@@ -23,7 +23,7 @@ int		my_str_isnum(const char *str)
   if (str == NULL || str[0] == 0)
     return (0);
   if (str[i] == '-' || str[i] == '+')
-    i++;
+    return (0);
   if (i != 0 && str[i] == 0)
     return (0);
   while (str[i])
