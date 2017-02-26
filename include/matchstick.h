@@ -5,7 +5,7 @@
 ** Login   <artha@epitech.net>
 **
 ** Started on  Tue Feb 21 09:26:26 2017 dylan renard
-** Last update Sat Feb 25 16:44:10 2017 dylan renard
+** Last update Sun Feb 26 20:48:00 2017 dylan renard
 */
 
 #ifndef MATCHSTICK_H_
@@ -74,6 +74,7 @@ void			my_free(int *map_copy, char **bin_map);
 void			next(t_info *info);
 t_info			*init_info(void);
 void			display_nim_sum(char *nim_sum);
+char			*compute_nim_sum(char **binmap);
 char			compute_nim_row(char **bin_map, int row);
 int			nim_sum_equal_zero(char *nim_sum);
 bool			is_best_nim_sum(char *current, char *best);
