@@ -5,7 +5,7 @@
 ** Login   <artha@epitech.net>
 **
 ** Started on  Thu Jan  5 13:26:49 2017 dylan renard
-** Last update Sun Feb 26 20:13:02 2017 dylan renard
+** Last update Sun Feb 26 21:23:59 2017 dylan renard
 */
 
 #include "my.h"
@@ -87,7 +87,7 @@ t_return		*final(char *str, char *rest)
     }
   if (str[0] == '\n' && count_n(rest) == 1)
     {
-      ret->str = NULL;
+      ret->str = my_strdup("\n");
       ret->rest = NULL;
       return (ret);
       }
@@ -112,7 +112,7 @@ char			*get_next_line(const int fd)
       while (info.status)
 	{
 	  ret = main_boucle(info, rest, fd);
-	  if (ret == NULL || (contain_0(REST) && my_strlen(REST) == 0)) RETURN;
+	  if (ret == NULL || (RET == NULL)) RETURN;
 	  rest = my_strdup(ret->rest);
 	  info.status = ret->status;
 	  if (contain_0(rest)) info.status = 0;

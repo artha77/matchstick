@@ -5,7 +5,7 @@
 ** Login   <artha@epitech.net>
 **
 ** Started on  Thu Jan 12 13:22:18 2017 dylan renard
-** Last update Sun Feb 26 20:04:35 2017 dylan renard
+** Last update Sun Feb 26 21:24:05 2017 dylan renard
 */
 
 #ifndef GET_NEXT_LINE_H_
@@ -14,6 +14,7 @@
 # define FD		statique->fd != fd
 # define REST		ret->rest
 # define RETURN		return (NULL)
+# define RET		contain_0(REST) && my_strlen(REST) == 0 && ret->str
 
 typedef struct		s_info1
 {
