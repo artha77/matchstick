@@ -5,13 +5,15 @@
 ** Login   <artha@epitech.net>
 **
 ** Started on  Thu Jan 12 13:22:18 2017 dylan renard
-** Last update Sun Feb 26 16:46:46 2017 dylan renard
+** Last update Sun Feb 26 20:04:35 2017 dylan renard
 */
 
 #ifndef GET_NEXT_LINE_H_
 # define GET_NEXT_LINE_H_
 # define READ_SIZE	40000
 # define FD		statique->fd != fd
+# define REST		ret->rest
+# define RETURN		return (NULL)
 
 typedef struct		s_info1
 {
@@ -26,8 +28,12 @@ typedef struct		s_return
 {
   int			status;
   char			*rest;
+  char			*str;
 }			t_return;
 
 char			*get_next_line(const int fd);
+int			count_n(char *str);
+int			contain_0(char *rest);
+int			contain_n(char *rest);
 
 #endif /* !GET_NEXT_LINE_H_ */

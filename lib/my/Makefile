@@ -5,7 +5,7 @@
 ## Login   <Artha77@epitech.net>
 ##
 ## Started on  Mon Oct 17 20:22:43 2016 dylan renard
-## Last update Sat Feb 25 10:42:57 2017 dylan renard
+## Last update Sun Feb 26 20:06:18 2017 dylan renard
 ##
 
 CC	=	gcc
@@ -34,6 +34,7 @@ SRCS	=	list.c	\
 		my_strcat.c	\
 		xmalloc.c	\
 		get_next_line.c	\
+		get_next_line_util.c	\
 		my_str_to_wordtab.c	\
 		tab_to_space.c	\
 		my_strncpy.c	\
