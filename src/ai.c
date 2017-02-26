@@ -5,7 +5,7 @@
 ** Login   <artha@epitech.net>
 **
 ** Started on  Wed Feb 22 08:08:02 2017 dylan renard
-** Last update Sat Feb 25 16:54:53 2017 dylan renard
+** Last update Sun Feb 26 17:04:03 2017 dylan renard
 */
 
 #include "matchstick.h"
@@ -104,7 +104,7 @@ int		smart_ai(int number_of_line, int max_num, int *map)
       if (move != NULL)
 	play(move->line + 1, move->match, map);
       my_putstr(my_strcat("AI removed ", to_string(move->match)));
-      my_puts(my_strcat(" match(es) from line ", to_string(move->line)));
+      my_puts(my_strcat(" match(es) from line ", to_string(move->line + 1)));
       return (is_defeat(map) + 1);
     }
   return (random_ai(number_of_line, max_num, map));
@@ -134,6 +134,6 @@ int		random_ai(int number_of_line, int max_num, int *map)
     }
   play(line, match, map);
   my_putstr(my_strcat("AI remove ", to_string(match)));
-  my_puts(my_strcat(" match(es) from line ", to_string(line)));
+  my_puts(my_strcat(" match(es) from line ", to_string(line + 1)));
   return (is_defeat(map) + 1);
 }

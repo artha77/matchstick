@@ -5,7 +5,7 @@
 ** Login   <artha@epitech.net>
 **
 ** Started on  Tue Feb 21 13:35:30 2017 dylan renard
-** Last update Sat Feb 25 17:13:44 2017 dylan renard
+** Last update Sun Feb 26 16:24:50 2017 dylan renard
 */
 
 #include "matchstick.h"
@@ -47,7 +47,11 @@ int		turn_of_user(int number_of_line, int max_num, int *map)
   while (match == -1)
     {
       line = get_line("Line: ", number_of_line);
+      if (line == -2)
+	return (-2);
       match = get_match("Matches: ", line, max_num, map);
+      if (match == -2)
+	return (-2);
     }
   play(line, match, map);
   my_putstr(my_strcat("Player removed ", to_string(match)));
@@ -65,7 +69,8 @@ int		start_game(int number_of_line, int max_num, int *map)
     {
       if (defeat <= 0)
 	{
-	  defeat = turn_of_user(number_of_line, max_num, map);
+	  if ((defeat = turn_of_user(number_of_line, max_num, map)) == -2)
+	    return (0);
 	  display_game(number_of_line, map);
 	}
       if  (defeat <= 0)

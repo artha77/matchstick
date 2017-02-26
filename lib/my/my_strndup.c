@@ -5,7 +5,7 @@
 ** Login   <artha@epitech.net>
 **
 ** Started on  Sat Feb 18 13:31:05 2017 dylan renard
-** Last update Sat Feb 18 13:35:34 2017 dylan renard
+** Last update Sun Feb 26 12:52:17 2017 dylan renard
 */
 
 #include <stdlib.h>
@@ -16,6 +16,8 @@ char	*my_strndup(char *src, int n)
   char	*dest;
   int	len;
 
+  if (n == 0)
+    return (NULL);
   if (src == NULL)
     return (NULL);
   len = my_strlen(src) + 1;

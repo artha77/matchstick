@@ -5,112 +5,102 @@
 ** Login   <artha@epitech.net>
 **
 ** Started on  Thu Jan  5 13:26:49 2017 dylan renard
-** Last update Sat Feb 25 16:40:39 2017 dylan renard
+** Last update Sun Feb 26 16:59:41 2017 dylan renard
 */
 
+#include "my.h"
 #include <stdlib.h>
 #include <fcntl.h>
 #include <unistd.h>
 #include "get_next_line.h"
 
-static int		my__strlen(char *str)
+int			contain_n(char *rest)
 {
   int			i;
+  int			contain;
 
   i = 0;
-  if (str == NULL)
+  contain = 0;
+  if (rest == NULL)
     return (0);
-  while (str[i] != '\0')
+  if (rest[i] == '\n')
+	contain++;
+  while (rest[i] != '\n' && rest[i] != '\0')
     {
       i++;
+      if (rest[i] == '\n')
+	contain++;
     }
-  return (i);
+  return (contain);
 }
 
-static char		*my_realloc_cpy(char *base, char *to_add)
+char			*cut(char *rest)
 {
-  char			*final;
   int			i;
-  int			j;
-  int			len_base;
-  int			len_add;
-
-  i = -1;
-  j = -1;
-  len_base = my__strlen(base);
-  len_add = my__strlen(to_add);
-  if ((final = malloc(len_base + len_add + 1)) == NULL)
-    return (NULL);
-  while (j != (len_base - 1))
-    final[++i] = base[++j];
-  j = -1;
-  while (j != (len_add - 1))
-    final[++i] = to_add[++j];
-  final[i + 1] = '\0';
-  return (final);
-}
-
-static t_stat		*init_static(t_stat *statique, int fd)
-{
-  if ((statique = malloc(sizeof(t_stat))) == NULL)
-    return (NULL);
-  statique->fd = fd;
-  statique->rest = NULL;
-  statique->ret = 0;
-  return (statique);
-}
-
-static char		*n_to_zero(t_stat *statique)
-{
-  char			*final;
-  char			*pt;
-  int			i;
+  char			*str;
 
   i = 0;
-  if (statique->rest == NULL)
-    return (NULL);
-  if ((final = malloc(my__strlen(statique->rest) + 1)) == NULL)
-    return (NULL);
-  while (statique->rest[i] != '\n' && statique->rest[i] != '\0')
+  while (rest[i] != '\n' && rest[i] != '\0')
     {
-      final[i] = statique->rest[i];
       i++;
     }
-  if (statique->rest[i] == '\0')
+  if (rest[i] == '\0')
     return (NULL);
-  final[i] = '\0';
-  pt = statique->rest;
-  if ((statique->rest = my_realloc_cpy((statique->rest + i + 1), NULL)) == NULL)
+  if (i == 0)
+    str = my_strdup("\n");
+  else
+    str = my_strndup(rest, i);
+  return (str);
+}
+
+t_return		*main_boucle(t_info1 info, char *rest, const int fd)
+{
+  t_return		*ret;
+
+  info.i = 0;
+  ret = malloc(sizeof(t_return));
+  if ((info.ret = read(fd, &info.buf, READ_SIZE)) < 0) return (NULL);
+  if (info.ret == 0 && rest == NULL)
     return (NULL);
-  free(pt);
-  return (final);
+  if (info.ret == 0 && rest != NULL)
+    return (NULL);
+  info.buf[info.ret] = '\0';
+  while (info.i != info.ret)
+    {
+      if (info.buf[info.i] == '\n')
+	info.status = 0;
+      info.i++;
+    }
+  info.i = 0;
+  rest = my_strcat(rest, info.buf);
+  ret->rest = rest;
+  ret->status = info.status;
+  return (ret);
 }
 
 char			*get_next_line(const int fd)
 {
-  int			statut;
-  int			i;
-  char			buf[READ_SIZE + 1];
-  char			*final;
-  static t_stat		*statique = NULL;
+  static char		*rest = NULL;
+  t_info1		info;
+  t_return		*ret;
 
-  i = 0;
-  statut = 1;
-  statique = (statique == NULL || FD) ? init_static(statique, fd) : statique;
-  if ((final = n_to_zero(statique)) != NULL) return (final);
-  while (statut)
+  info.status = 1;
+  if (contain_n(rest) == 0)
     {
-      if ((statique->ret = read(fd, &buf, READ_SIZE)) <= 0) return (NULL);
-      buf[statique->ret] = '\0';
-      while ((i != (statique->ret) && statut != 0))
+      while (info.status)
 	{
-	  if (buf[i] == '\n')
-	    statut = 0;
-	  i++;
+	  ret = main_boucle(info, rest, fd);
+	  if (ret == NULL) return (NULL);
+	  rest = ret->rest;
+	  info.status = ret->status;
 	}
-      statique->rest = my_realloc_cpy(statique->rest , buf);
-      i = 0;
     }
-  if ((final = n_to_zero(statique)) == NULL) return (NULL);
-  return (final);
+  info.str = cut(rest);
+  if (info.str == NULL)
+    return (info.str);
+  if (my_strlen(info.str) == 1 && my_strcmp(info.str, "\n") == 0)
+    rest = my_strdup(rest + 1);
+  else
+    rest = my_strdup(rest + (my_strlen(info.str) + 1));
+  return (info.str);
 }

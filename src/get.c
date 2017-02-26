@@ -5,7 +5,7 @@
 ** Login   <artha@epitech.net>
 **
 ** Started on  Tue Feb 21 15:25:35 2017 dylan renard
-** Last update Sat Feb 25 12:48:59 2017 dylan renard
+** Last update Sun Feb 26 16:23:39 2017 dylan renard
 */
 
 #include "matchstick.h"
@@ -35,6 +35,8 @@ int		get_match(char *msg, int line, int max_num, int *map)
 
   my_putstr(msg);
   str = get_next_line(0);
+  if (str == NULL)
+    return (-2);
   if (verif_match(str, line, max_num, map))
     return (my_atoi(str));
   else
@@ -69,6 +71,8 @@ int		get_line(char *msg, int number_of_line)
   while (line == -1)
     {
       str = get_next_line(0);
+      if (str == NULL)
+	return (-2);
       if (verif_line(str, number_of_line))
 	line = my_atoi(str);
       else
